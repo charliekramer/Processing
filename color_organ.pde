@@ -42,7 +42,9 @@ void setup() {
 void draw() { 
   
  // if (!mousePressed) background(1+(sin(j/10))*127, 0, 1+(cos(j/10))*127);
- if (!mousePressed) background(1+(sin(j/10))*255);
+ //if (!mousePressed) background(1+(sin(j/10))*255);
+if (!mousePressed) background(0);
+ 
  
   
   j++;
