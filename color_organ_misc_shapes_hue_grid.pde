@@ -38,8 +38,8 @@ void setup() {
   int i;
 
   for (i = 0; i < bands; i++) {
-    xRand[i] = random(width);
-    yRand[i] = random(height);
+    xRand[i] = random(width/bands);
+    yRand[i] = random(height/bands);
   }
 }      
 

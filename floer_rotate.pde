@@ -1,4 +1,5 @@
-
+// up key, down key = change radius
+// click mouse = redraw
 
 float centerX = width/2;
 float centerY = height/2;
