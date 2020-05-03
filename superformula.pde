@@ -13,19 +13,16 @@ void setup() {
 }
 
 float t = 0;
-float k = 0;
-
-
 
 void draw() {
   background(0);
   
   translate(width/2, height/2);
   
-   float aR = 1+ 0*random(.1,1.1);
-  float bR = 1+ 0*random(.9,1.1);
-  float mR = 6+1*random (k%12+1, k%12+2);
-  float n1R = 1+0*random(.9,1.1);
+   float aR = random(.1,1.1);
+  float bR = random(.9,1.1);
+  float mR = random (7,7);
+  float n1R = random(.9,1.1);
   
   beginShape();
   
@@ -49,7 +46,6 @@ void draw() {
  
   
   t += 0.1;
-  k += .01;
 }
 
 float r(float theta, float a, float b, float m, float n1, float n2, float n3) {
