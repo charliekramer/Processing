@@ -18,7 +18,8 @@ int delayMs = 50; // delay in ms
 float fadeRate = .01; // higher fade faster;
 
 void setup() {
-  size(1200, 650);
+  //size(1200, 650);
+  fullScreen();
   MidiBus.list(); 
   myBus = new MidiBus(this, midiDevice, 1); 
   background(0);
@@ -61,7 +62,7 @@ void midiMessage(MidiMessage message, long timestamp, String bus_name) {
   //  fill(255);
   // ellipse(note, note, 10, 10);
   //}
-  mNote = note;
+  mNote = note*height/127;
   mVel = vel;
   offOn = offOnMsg;
  }
