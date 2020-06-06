@@ -66,7 +66,7 @@ void draw() {
       float xOff = width/nCol*.5 + width/nCol*i+20*sin(t*.001); 
       float yOff = height/nRow*.5 + height/nRow*j+20*cos(t*.001);
       translate(xOff+1*noise(xOff+t,yOff,0)*(1+.5*sin(t)),yOff+1*noise(xOff,yOff+t,0)*1+.5*cos(t),10*noise(xOff,yOff,t)); 
-      sphere(sphereSize);
+      sphere(sphereSize*noise(i,j,noise(i,j,t/5)));
       popMatrix();
       }
   }
