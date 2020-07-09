@@ -4,14 +4,16 @@ float t = 0;
 float dt = .001;
 
 import processing.sound.*;
+import controlP5.*;
 
 SinOsc[] sineWaves; 
+ControlP5 cp5;
 
 int numSines = (chunks)*(chunks);
 
 float[] sineVolume;
 
-float freqMult = 22.5; // 2,.5 are interesting)
+float freqMult = 2.5; // 2,.5, 22.5 are interesting)
 
 float rateMult = 1000;
 
@@ -23,8 +25,9 @@ Delay delay;
 
 void setup() {
 
-size(600,400);
+size(1200,900);//600,400
 background(0);
+cp5 = new ControlP5(this);
 delay = new Delay(this);
 delay.feedback(delayFeedback);
 delay.time(delayTime);
@@ -35,7 +38,15 @@ delay.time(delayTime);
    sineWaves[i] = new SinOsc(this);
    sineWaves[i].play();
    delay.process(sineWaves[i], delayTime);
- }
+   }
+ 
+ cp5.addSlider("freqMult")
+     .setPosition(0,0)
+     .setSize(10,200)
+     .setRange(.1,50)
+     .setValue(1)
+     .setColorCaptionLabel(color(20,20,20));
+  
   
 }
 
