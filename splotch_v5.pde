@@ -8,6 +8,10 @@
 import oscP5.*;
 import netP5.*;
 
+int glitchPixels = 1;
+float glitchPixelSize = .00001; // *= 1 + - glitchPixelSize
+float sizeRand = 10; // mult factor on randSize = (1+sin(t))*sizeRand //  xX[i] = xX[i-1] + random(-randSize, randSize);
+
 float t = 0; //oscillate random size of splotch;
 float dt = .1;
 
@@ -57,7 +61,7 @@ void draw() {
   stroke(255);
   strokeWeight(2);
   
-  float randSize = (1+sin(t))*10;
+  float randSize = (1+sin(t))*sizeRand;
  
   if (n % nVertex == 0) {  // reinitialize x,y;
     xX[0] = random(width);
@@ -94,7 +98,7 @@ void draw() {
   loadPixels();
   float avgBright = 0;
   for (int i = 0; i < width*height; i++) {
-    pixels[i] *= random(.999,1.001)*(1+cos(t/20));
+    if (glitchPixels == 1) pixels[i] *= random(1.-glitchPixelSize,1.+glitchPixelSize)*(1+cos(t/20));
     avgBright += brightness(pixels[i])/( width*height);
   }
   updatePixels();
