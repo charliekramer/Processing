@@ -7,6 +7,7 @@ float dj = 1;
 float xrate = 0.05*.5;
 float yrate =0.05*2*.5;
 int colors = 1;
+int nEllipse = 3;
 
 void draw() {
   //background(0);
@@ -14,7 +15,7 @@ void draw() {
   rect(0, 0, width, height);
   noFill();
   stroke(255);
- for (int i = 0; i < width; i = i+(width/10)) {
+ for (int i = 0; i < width; i = i+(width/nEllipse)) {
    if (colors == 1) stroke(255,0,0);
    ellipse(width/2,height/2, (j-i) % width,(j-i) % width);
    if (colors == 1) stroke(0,255,0);
