@@ -54,7 +54,7 @@ void draw() {
     
   }
   
-  float frequency = map(yCenter, 0, height, 600, 20);
+  float frequency = map(yCenter, 0, height, 600, 20)*(1+.01*sin(frameCount));
   sin.freq(frequency);
   float panning = map(xCenter, 0, width, -1.0, 1.0);
   sin.pan(panning);
