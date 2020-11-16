@@ -1,19 +1,24 @@
-float xpos, ypos, dxpos, dypos;
+float xpos, ypos, dxpos, dypos, xD,xU,yD,yU;
 
 void setup() {
   
-  size(900,700,P3D);
+  size(1200,800,P3D);
   xpos = width/2;
   ypos = height/2;
   dxpos = 1;
   dypos = 1;
+  xD = -2;
+  yD = -1;
+  xU = 5;
+  yU = 3;
   
   
 }
 
 void draw() {
- translate(xpos,ypos);
- background(0);
+  fill(0,24);
+  rect(0,0, width,height);
+  translate(xpos,ypos);
   if (random(0.,1) > .9) 
   {
     background(255);
@@ -32,9 +37,19 @@ void draw() {
   ellipse(-radius*.25, -radius*.15, radius*.1, radius*.1); // left eye
   ellipse(0,0,5,5); //nose
   line(-radius*.25, radius*.2, radius*.25, radius*.2);
-  xpos += dxpos*random(-2,2);
-  ypos += dxpos*random(-2,2);
-  if (xpos < 0 || xpos > width) dxpos *= -1;
+  xpos += dxpos*random(xD,xU);
+  ypos += dxpos*random(yD,yU);
+  if (xpos <= radius || xpos >= width-radius) {
+    dxpos *= -1;
+    xD = random(-10,-3);
+    xU = random(3,10);
+  }
   
-  if (ypos < 0 || ypos > height) dypos *= -1;
+  if (ypos <= radius || ypos >= height-radius) {
+    dypos *= -1;
+   yD = random(-10,-3);
+   yU = random(3,10);
+    
+  }
+  println(xpos,ypos,xD,xU,yD,yU);
 }
