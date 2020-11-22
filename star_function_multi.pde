@@ -35,8 +35,8 @@ void draw() {
   for (int i = 0; i < n; i++) {
   
     star(x[i],y[i],size[i],wide[i], speed[i],red[i],green[i],blue[i]);
-    if (random(1) > .99) {
-    
+   
+    if (random(1) > .99) { 
       wide[i] = random(1);
       x[i] = random(width*wide[i]);
       y[i] = random(height*wide[i]);
@@ -44,12 +44,11 @@ void draw() {
       speed[i] = random(.05);
       red[i] = random(255);
       green[i] = random(255);
-      blue[i] = random(255);
-  
+      blue[i] = random(255);  
+      }
       
   }
   
-}
 }
 
 void star(float xPos, float yPos, float starSize, float wide, float speed, float red, float green, float blue) {
@@ -58,6 +57,7 @@ void star(float xPos, float yPos, float starSize, float wide, float speed, float
   float z = (1+sin(frameCount*speed));
   noFill();
   stroke(red,green,blue);
+  strokeWeight(1);
   s.beginShape();
   for(int i = 1; i < width*wide; i++) {
     s.vertex(i*z,z*starSize/i);
@@ -72,6 +72,9 @@ void star(float xPos, float yPos, float starSize, float wide, float speed, float
     s.vertex(-i*z,-z*starSize/i);
   }
   s.endShape(CLOSE);
+  
+ 
    
   shape(s,0,0);
-}
+  
+  }
