@@ -1,12 +1,20 @@
+// add mouse controlled camera option
 float xdiv = 10;
 float ydiv =10;
 float xpos = 0;
 float ypos = 0;
+float zpos = 0;
 float x = xpos;
 float y = ypos;
 float xdir = 1;
 float ydir = -1;
 float xon = 1;
+float r = random(255);
+float g = random(255);
+float b = random(255);
+float alpha = 32;
+float angle = PI/8;
+
 int quant = 1; //quantize x y divisions
 
 void setup() {
@@ -32,10 +40,25 @@ void draw() {
   
   
     //rotateZ(2*PI*frameCount/20);
-  ellipse(x,y,3,3);
+  //ellipse(x,y,3,3);
+  if (ydir == 1) rotateY(angle); //PI/8
+  else rotateX(-angle); //-PI/8
+  //fill(0);
+  fill(r,g,b,alpha);
+  translate(x,y,zpos);
+  box(18,18,12);
+  //rect(x,y,20,20);
+  
+   if (ydir == 1) rotateY(-PI/8);
+  else rotateX(PI/8);
+ 
+  
   if (random(0,1) > .99) 
   {
-    stroke(random(255),random(255),random(255));
+    r = random(255);
+    g = random(255);
+    b = random(255);
+    stroke(r,g,b);
     xpos = random(0,width);
     ypos = random(0,height);
     if (quant == 1) {
@@ -45,7 +68,10 @@ void draw() {
     xdir *= -1;
     ydir *= -1;
     xon *= -1;
-    println("reset, xpos, ypos", xpos, ypos);
+    angle = random(2*PI);
+    zpos = random(-500,500);
+    println("reset, xpos", xpos, "ypos",ypos, "zpos",zpos, "angle",angle);
+    
   }
   
   
